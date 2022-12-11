@@ -1,0 +1,117 @@
+
+{% extends 'base.html' %}
+{% block page_content %}
+
+    <body style="background-color:#0dcaf0;"></body>
+    <div class="row justify-content-center">
+        <div class="d-flex">
+            <div class="d-inline p-2 w-50">
+
+                <h1><u>{{ profile.username }} User Profile</u></h1>
+
+            </div>
+
+            <div class="d-inline p-2 w-50">
+                <div class="d-flex flex-column">
+                    {% if profile.first_name %}
+                        <h5><u>User Name:</u> {{ profile.first_name }} {{ profile.last_name }}</h5>
+                    {% endif %}
+                    {% if profile.firm_name %}
+                        <h5><u>firm Name:</u> {{ profile.firm_name }}</h5>
+                    {% endif %}
+
+                    {% if profile.address %}
+                        <h5><u>Address:</u> {{ profile.address }}</h5>
+                    {% endif %}
+                    {% if profile.email %}
+                        <h5><u>Email:</u> {{ profile.email }}</h5>
+                    {% endif %}
+                    {% if profile.phone %}
+                        <h5><u>Phone Number:</u> {{ profile.phone }}</h5>
+                    {% endif %}
+                    {% if profile.address %}
+                        <h5><u>Address:</u> {{ profile.address }}</h5>
+                    {% endif %}
+                    {% if profile.region %}
+                        <h5><u>Region:</u> {{ profile.region }}</h5>
+                    {% endif %}
+                </div>
+                <div>
+                    <a href="{% url 'dashboard' %}" class="btn btn-secondary btn-sm">Dashboard</a>
+{#                    <a href="{% url 'edit user' profile.id %}" class="btn btn-secondary btn-sm">Edit profile</a>#}
+{#                    <a href="{% url 'delete user' profile.pk %}" class="btn btn-secondary btn-sm">Delete profile</a>#}
+                    <a href="{% url 'create car' %}" class="btn btn-secondary btn-sm">Add Advertisement</a>
+                    <a href="{% url 'create truck' %}" class="btn btn-secondary btn-sm">Add Truck Advertisement</a>
+                    <a href="{% url 'logout user' %}" class="btn btn-secondary btn-sm">Logout</a>
+                    <a class="btn btn-secondary btn-sm" href="javascript:history.back()">Back</a>
+                </div>
+            </div>
+        </div>
+
+        {% if cars %}
+            {% for car in cars %}
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="card ml-3 mb-3" style="width: 12rem;">
+                                <img src="{{ car.photo1 }}"
+                                     class="card-img-top" alt="Photo description">
+                                <div class="card-body">
+
+                                    <h5 class="card-title">{{ car.brand }}  {{ car.model }}</h5>
+                                    <p class="card-text">First registration : {{ car.first_reg_date }}</p>
+                                    <p class="card-text">{{ car.transmission }}</p>
+                                    <p class="card-text">{{ car.fuel }}</p>
+                                    <p class="card-text">{{ car.km }} KM</p>
+                                    <p class="card-text">Price : {{ car.price }} Euro</p>
+                                    <div class="navbar">
+{#                                        <a href="{% url 'car details' car.pk %}"#}
+{#                                           class="btn btn-secondary btn-sm">Seе</a>#}
+{#                                        <a href="{% url 'edit car' car.pk %}"#}
+{#                                           class="btn btn-secondary btn-sm">Edit</a>#}
+{#                                        <a href="{% url 'delete car' car.pk %}"#}
+{#                                           class="btn btn-secondary btn-sm">Delete</a>#}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+                {% if trucks %}
+            {% for truck in trucks %}
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="card ml-3 mb-3" style="width: 12rem;">
+                                <img src="{{ truck.photo1 }}"
+                                     class="card-img-top" alt="Photo description">
+                                <div class="card-body">
+
+                                    <h5 class="card-title">{{ truck.brand }}  {{ truck.model }}</h5>
+                                    <p class="card-text">First registration : {{ truck.first_reg_date }}</p>
+                                    <p class="card-text">{{ truck.transmission }}</p>
+                                    <p class="card-text">{{ truck.fuel }}</p>
+                                    <p class="card-text">{{ truck.kilometers }} KM</p>
+                                    <p class="card-text">Price : {{ truck.price }} Euro</p>
+                                    <div class="navbar">
+{#                                        <a href="{% url 'car details' car.pk %}"#}
+{#                                           class="btn btn-secondary btn-sm">Seе</a>#}
+{#                                        <a href="{% url 'edit car' car.pk %}"#}
+{#                                           class="btn btn-secondary btn-sm">Edit</a>#}
+{#                                        <a href="{% url 'delete car' car.pk %}"#}
+{#                                           class="btn btn-secondary btn-sm">Delete</a>#}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+{% endblock %}
