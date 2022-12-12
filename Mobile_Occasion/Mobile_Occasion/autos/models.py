@@ -114,97 +114,97 @@ class Truck(models.Model):
     def __str__(self):
         return f'{self.brand} {self.model}'
 
-
-class Motorbike(models.Model):
-    DIESEL = "Diesel"
-    PETROL = "Petrol"
-    ELECTRIC = "Electric"
-    OTHER = "Other"
-
-    MANUAL = 'Manual'
-    AUTOMATIC = 'Automatic'
-
-    NAKED_BIKE = "Naked Bike"
-    SCOOTER = "Scooter"
-    CHOPPER = "Chopper"
-    MOTORCYCLE = "Motorcycle"
-    ENDURO = "Enduro"
-    TYPE_TRANSMISSION = [(x, x) for x in (MANUAL, AUTOMATIC,)]
-    CATEGORY = [(x, x) for x in (NAKED_BIKE, SCOOTER, CHOPPER, MOTORCYCLE, ENDURO,)]
-    TYPES_FUEL = [(x, x) for x in (DIESEL, PETROL, ELECTRIC, OTHER)]
-
-    brand = models.CharField(max_length=15, null=False, blank=False, )
-
-    model = models.CharField(max_length=15, null=False, blank=False, )
-
-    type = models.CharField(max_length=max(len(x) for (x, _) in CATEGORY), choices=CATEGORY, null=True,
-                            blank=True, )
-    fuel = models.CharField(max_length=max(len(x) for (x, _) in TYPES_FUEL), choices=TYPES_FUEL, )
-
-    price = models.CharField(max_length=15, null=False, blank=False, )
-
-    first_reg_date = models.DateField(null=False, blank=False, )
-
-    kilometers = models.CharField(max_length=15, null=False, blank=False, )
-
-    photo1 = models.URLField(null=False, blank=False, )
-
-    photo2 = models.URLField(null=True, blank=True, )
-
-    photo3 = models.URLField(null=True, blank=True, )
-
-    photo4 = models.URLField(null=True, blank=True, )
-
-    user = models.ForeignKey(UserModel, on_delete=models.CASCADE, )
-
-    def __str__(self):
-        return f'{self.brand} {self.model}'
-
-
-class BoatsYachts(models.Model):
-    ANY = "Any"
-    NEW = "New"
-    USED = "Used"
-    CATEGORY = [(x, x) for x in (ANY, NEW, USED)]
-    DIESEL = "Diesel"
-    PETROL = "Petrol"
-    ELECTRIC = "Electric"
-    OTHER = "Other"
-    TYPES_FUEL = [(x, x) for x in (DIESEL, PETROL, ELECTRIC, OTHER)]
-
-    brand = models.CharField(max_length=15, null=False, blank=False, )
-
-    model = models.CharField(max_length=15, null=False, blank=False, )
-
-    type = models.CharField(max_length=max(len(x) for (x, _) in CATEGORY), choices=CATEGORY, null=True,
-                            blank=True, )
-
-    length = models.IntegerField(max_length=15, null=True, blank=True)
-
-    weight = models.IntegerField(max_length=15, null=True, blank=True)
-
-    person = models.IntegerField(max_length=15, null=True, blank=True)
-
-    first_reg_date = models.DateField(null=False, blank=False, )
-
-    power = models.CharField(max_length=15, null=True, blank=True)
-
-    fuel = models.CharField(max_length=max(len(x) for (x, _) in TYPES_FUEL), choices=TYPES_FUEL, )
-
-    timework = models.CharField(max_length=15, null=True, blank=True)
+#
+# class Motorbike(models.Model):
+#     DIESEL = "Diesel"
+#     PETROL = "Petrol"
+#     ELECTRIC = "Electric"
+#     OTHER = "Other"
+#
+#     MANUAL = 'Manual'
+#     AUTOMATIC = 'Automatic'
+#
+#     NAKED_BIKE = "Naked Bike"
+#     SCOOTER = "Scooter"
+#     CHOPPER = "Chopper"
+#     MOTORCYCLE = "Motorcycle"
+#     ENDURO = "Enduro"
+#     TYPE_TRANSMISSION = [(x, x) for x in (MANUAL, AUTOMATIC,)]
+#     CATEGORY = [(x, x) for x in (NAKED_BIKE, SCOOTER, CHOPPER, MOTORCYCLE, ENDURO,)]
+#     TYPES_FUEL = [(x, x) for x in (DIESEL, PETROL, ELECTRIC, OTHER)]
+#
+#     brand = models.CharField(max_length=15, null=False, blank=False, )
+#
+#     model = models.CharField(max_length=15, null=False, blank=False, )
+#
+#     type = models.CharField(max_length=max(len(x) for (x, _) in CATEGORY), choices=CATEGORY, null=True,
+#                             blank=True, )
+#     fuel = models.CharField(max_length=max(len(x) for (x, _) in TYPES_FUEL), choices=TYPES_FUEL, )
+#
+#     price = models.CharField(max_length=15, null=False, blank=False, )
+#
+#     first_reg_date = models.DateField(null=False, blank=False, )
+#
+#     kilometers = models.CharField(max_length=15, null=False, blank=False, )
+#
+#     photo1 = models.URLField(null=False, blank=False, )
+#
+#     photo2 = models.URLField(null=True, blank=True, )
+#
+#     photo3 = models.URLField(null=True, blank=True, )
+#
+#     photo4 = models.URLField(null=True, blank=True, )
+#
+#     user = models.ForeignKey(UserModel, on_delete=models.CASCADE, )
+#
+#     def __str__(self):
+#         return f'{self.brand} {self.model}'
 
 
+# class BoatsYachts(models.Model):
+#     ANY = "Any"
+#     NEW = "New"
+#     USED = "Used"
+#     CATEGORY = [(x, x) for x in (ANY, NEW, USED)]
+#     DIESEL = "Diesel"
+#     PETROL = "Petrol"
+#     ELECTRIC = "Electric"
+#     OTHER = "Other"
+#     TYPES_FUEL = [(x, x) for x in (DIESEL, PETROL, ELECTRIC, OTHER)]
+#
+#     brand = models.CharField(max_length=15, null=False, blank=False, )
+#
+#     model = models.CharField(max_length=15, null=False, blank=False, )
+#
+#     type = models.CharField(max_length=max(len(x) for (x, _) in CATEGORY), choices=CATEGORY, null=True,
+#                             blank=True, )
+#
+#     length = models.IntegerField(max_length=15, null=True, blank=True)
+#
+#     weight = models.IntegerField(max_length=15, null=True, blank=True)
+#
+#     person = models.IntegerField(max_length=15, null=True, blank=True)
+#
+#     first_reg_date = models.DateField(null=False, blank=False, )
+#
+#     power = models.CharField(max_length=15, null=True, blank=True)
+#
+#     fuel = models.CharField(max_length=max(len(x) for (x, _) in TYPES_FUEL), choices=TYPES_FUEL, )
+#
+#     enginetime = models.CharField(max_length=15, null=True, blank=True)
 
 
 
 
 
-
-class AgriculturalMachin(models.Model):
-    ANY = "Any"
-    NEW = "New"
-    USED = "Used"
-
-
-class Caravans(models.Model):
-    pass
+#
+#
+#
+# class AgriculturalMachin(models.Model):
+#     ANY = "Any"
+#     NEW = "New"
+#     USED = "Used"
+#
+#
+# class Caravans(models.Model):
+#     pass

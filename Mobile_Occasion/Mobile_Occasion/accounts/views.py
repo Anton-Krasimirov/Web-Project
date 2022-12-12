@@ -48,8 +48,10 @@ class UserLoginView(auth_view.LoginView, ContextMixin):
 class UserLogoutView(auth_view.LogoutView):
     pass
 
+
 class UserDetailView(auth_mixin.LoginRequiredMixin, views.DetailView):
     model = get_user_model()
+    form_class = RegistrationProfileForm
     template_name = 'accounts/profile_detail.html'
     context_object_name = 'profile'
 
@@ -61,17 +63,17 @@ class UserDetailView(auth_mixin.LoginRequiredMixin, views.DetailView):
 
         return context
 
-#
-# class EditProfileView(views.UpdateView):
-#     model = UserProfile
-#     template_name = 'accounts/edit_profile.html'
-#     fields = ('first_name', 'last_name', 'email', 'phone', 'region')
-#
-#     def get_success_url(self):
-#         return reverse_lazy('profile details', kwargs={'pk': self.object.pk})
-#
-#
-# class DeleteUserProfileView(views.DeleteView):
-#     model = get_user_model()
-#     template_name = 'accounts/delete_user.html'
-#     success_url = reverse_lazy('index')
+
+class EditProfileView(views.UpdateView):
+    model = get_user_model()
+    template_name = 'accounts/edit_profile.html'
+    fields = ('username', 'email', )
+
+    def get_success_url(self):
+        return reverse_lazy('profile details', kwargs={'pk': self.object.pk})
+
+
+class DeleteUserProfileView(views.DeleteView):
+    model = get_user_model()
+    template_name = 'accounts/delete_user.html'
+    success_url = reverse_lazy('index')

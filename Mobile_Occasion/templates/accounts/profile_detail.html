@@ -13,33 +13,19 @@
 
             <div class="d-inline p-2 w-50">
                 <div class="d-flex flex-column">
-                    {% if profile.first_name %}
-                        <h5><u>User Name:</u> {{ profile.first_name }} {{ profile.last_name }}</h5>
-                    {% endif %}
-                    {% if profile.firm_name %}
-                        <h5><u>firm Name:</u> {{ profile.firm_name }}</h5>
+                    {% if profile.username %}
+                        <h5><u>User Name:</u> {{ profile.username }}</h5>
                     {% endif %}
 
-                    {% if profile.address %}
-                        <h5><u>Address:</u> {{ profile.address }}</h5>
-                    {% endif %}
                     {% if profile.email %}
                         <h5><u>Email:</u> {{ profile.email }}</h5>
                     {% endif %}
-                    {% if profile.phone %}
-                        <h5><u>Phone Number:</u> {{ profile.phone }}</h5>
-                    {% endif %}
-                    {% if profile.address %}
-                        <h5><u>Address:</u> {{ profile.address }}</h5>
-                    {% endif %}
-                    {% if profile.region %}
-                        <h5><u>Region:</u> {{ profile.region }}</h5>
-                    {% endif %}
+
                 </div>
                 <div>
                     <a href="{% url 'dashboard' %}" class="btn btn-secondary btn-sm">Dashboard</a>
-{#                    <a href="{% url 'edit user' profile.id %}" class="btn btn-secondary btn-sm">Edit profile</a>#}
-{#                    <a href="{% url 'delete user' profile.pk %}" class="btn btn-secondary btn-sm">Delete profile</a>#}
+                    <a href="{% url 'edit user' profile.id %}" class="btn btn-secondary btn-sm">Edit profile</a>
+                    <a href="{% url 'delete user' profile.pk %}" class="btn btn-secondary btn-sm">Delete profile</a>
                     <a href="{% url 'create car' %}" class="btn btn-secondary btn-sm">Add Advertisement</a>
                     <a href="{% url 'create truck' %}" class="btn btn-secondary btn-sm">Add Truck Advertisement</a>
                     <a href="{% url 'logout user' %}" class="btn btn-secondary btn-sm">Logout</a>

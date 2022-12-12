@@ -1,7 +1,7 @@
 from django.views import generic as views
 from django.urls import reverse_lazy
 
-from Mobile_Occasion.autos.forms import CreatTruckProfileForm
+from Mobile_Occasion.autos.forms.truck_forms import CreatTruckProfileForm
 from Mobile_Occasion.autos.models import Truck
 
 
